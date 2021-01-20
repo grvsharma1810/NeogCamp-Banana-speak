@@ -12,11 +12,9 @@ button.addEventListener("click",() => {
     var inputText = textInput.value;
     console.log(inputText);
     fetch(constructURL(inputText))
+        .then(response => response.json())
         .then(response => {
-            response.json();
-        })
-        .then(response => {
-            outputContainer.inputText = response.contents.translated;
+            outputContainer.innerText = response.contents.translated;
         })
         .catch(error => {
             alert("Some Error Occured. Please try after some time")
